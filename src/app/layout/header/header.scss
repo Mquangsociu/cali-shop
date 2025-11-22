@@ -1,17 +1,93 @@
-:host {
-  display: block;
-  padding: 1.8rem 1.2rem 1rem;
-  text-align: center;
+.header {
+  background-color: #d70018;
+  color: #fff;
+  padding: 10px 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    img {
+      height: 40px;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &-search {
+    display: flex;
+    flex-grow: 1;
+    margin: 0 20px;
+    max-width: 400px;
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding: 10px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .btn {
+      border-radius: 0 5px 5px 0;
+      background-color: #fff;
+      color: #333;
+      padding: 0 15px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &-action {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    cursor: pointer;
+
+    i {
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    span {
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      line-height: 1.2;
+
+      strong {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .user-menu {
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    strong {
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
-h1 {
-  margin: 0 0 .4rem;
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  letter-spacing: .5px;
-}
-
-.tagline {
-  margin: 0 0 1.2rem;
-  opacity: .85;
-  font-weight: 500;
-}

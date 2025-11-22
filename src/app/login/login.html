@@ -1,9 +1,22 @@
-<ng-container *ngIf="user$ | async as user; else loginButton">
-  <div>
-    <h1>Hello, {{ $any(user).displayName }}</h1>
-    <button (click)="logout()">Logout</button>
-  </div>
-</ng-container>
-<ng-template #loginButton>
-  <button (click)="login()">Login with Google</button>
-</ng-template>
+<div class="login-container">
+  <ng-container *ngIf="user$ | async as user; else loginButton">
+    <div class="profile">
+      <img [src]="$any(user).photoURL" alt="avatar" class="avatar" />
+      <div class="meta">
+        <div class="name">{{ $any(user).displayName }}</div>
+        <div class="email">{{ $any(user).email }}</div>
+        <button class="btn logout" (click)="logout()">Đăng xuất</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #loginButton>
+    <div class="login-box">
+      <h2>Đăng nhập</h2>
+      <button class="google-btn" (click)="login()">
+        <i class="fa-brands fa-google"></i>
+        <span>Đăng nhập bằng Google</span>
+      </button>
+    </div>
+  </ng-template>
+</div>

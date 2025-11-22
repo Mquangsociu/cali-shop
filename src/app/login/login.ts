@@ -7,7 +7,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
   standalone: true,
   imports: [AsyncPipe, NgIf],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrls: ['./login.scss']
 })
 export class LoginComponent {
   authService = inject(AuthService);

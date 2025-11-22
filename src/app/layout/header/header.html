@@ -1,5 +1,64 @@
-<header class="site-header">
-    <h1>CALI SHOP</h1>
-    <p class="tagline">Chuyên Laptop Gaming • Văn Phòng • Design giá rẻ cho sinh viên HOA SEN</p>
-    
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a routerLink="/" class="header__logo">
+        <img src="assets/images/logo.svg" alt="Cali Shop" />
+      </a>
+
+      <div class="header-search">
+        <input type="text" placeholder="Bạn cần tìm gì?" />
+        <button class="btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <div class="header-actions">
+        <div class="header-action">
+          <i class="fa-solid fa-phone"></i>
+          <span>
+            Hotline
+            <strong>1900.5301</strong>
+          </span>
+        </div>
+        <div class="header-action">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>
+            Hệ thống
+            <strong>Showroom</strong>
+          </span>
+        </div>
+        <div class="header-action">
+          <i class="fa-solid fa-box"></i>
+          <span>
+            Tra cứu
+            <strong>đơn hàng</strong>
+          </span>
+        </div>
+        <div class="header-action">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>
+            Giỏ
+            <strong>hàng</strong>
+          </span>
+        </div>
+        @if (user$ | async; as user) {
+          <div class="header-action user-menu">
+            <img [src]="user.photoURL" alt="User Avatar" class="avatar" />
+            <span>
+              {{ user.displayName }}
+              <strong (click)="logout()">Đăng xuất</strong>
+            </span>
+          </div>
+        } @else {
+          <a routerLink="/login" class="header-action">
+            <i class="fa-solid fa-user"></i>
+            <span>
+              Đăng
+              <strong>nhập</strong>
+            </span>
+          </a>
+        }
+      </div>
+    </div>
+  </div>
 </header>
