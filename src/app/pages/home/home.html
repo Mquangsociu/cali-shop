@@ -1,0 +1,59 @@
+<section class="filters">
+  <div class="categories">
+    <button class="cat-btn" [class.active]="activeCategory() === 'all'" (click)="setCategory('all')">Tất cả</button>
+    <button class="cat-btn" [class.active]="activeCategory() === 'gaming'" (click)="setCategory('gaming')">Gaming</button>
+    <button class="cat-btn" [class.active]="activeCategory() === 'van-phong'" (click)="setCategory('van-phong')">Văn Phòng</button>
+    <button class="cat-btn" [class.active]="activeCategory() === 'design'" (click)="setCategory('design')">Design</button>
+  </div>
+  <div class="search-sort">
+    <input 
+      type="search" 
+      id="searchInput" 
+      placeholder="Tìm kiếm theo tên..." 
+      [ngModel]="keyword()"
+      (ngModelChange)="keyword.set($event)"
+      aria-label="Tìm kiếm sản phẩm"
+    />
+    <select 
+      id="sortSelect" 
+      aria-label="Sắp xếp sản phẩm"
+      [ngModel]="sortMode()"
+      (ngModelChange)="sortMode.set($event)"
+    >
+      <option value="default">Mặc định</option>
+      <option value="asc">Giá tăng dần</option>
+      <option value="desc">Giá giảm dần</option>
+    </select>
+  </div>
+</section>
+
+<section id="products">
+  @if (filteredProducts().length > 0) {
+    @for (p of filteredProducts(); track p.id) {
+      <article class="product-card" [class]="p.category" [attr.data-category]="p.category" [attr.data-price]="p.price">
+        <div class="badges">
+          <span class="badge" [class]="p.category">{{ labelCategory(p.category) }}</span>
+        </div>
+        <h2 class="product-title">{{ p.title }}</h2>
+        <p class="desc">{{ p.desc }}</p>
+        <div class="specs">
+          @for (s of p.specs; track s) {
+            <span class="badge">{{ s }}</span>
+          }
+        </div>
+        <div class="price-row">
+          <span class="price">{{ formatPrice(p.price) }}</span>
+          @if (p.oldPrice) {
+            <span class="old-price">{{ formatPrice(p.oldPrice) }}</span>
+          }
+        </div>
+        <div class="actions">
+          <button class="btn">Mua ngay</button>
+          <a class="btn secondary" [routerLink]="['/product', p.id]" [ariaLabel]="'Xem chi tiết sản phẩm ' + p.title">Chi tiết</a>
+        </div>
+      </article>
+    }
+  } @else {
+    <div class="empty">Không tìm thấy sản phẩm phù hợp.</div>
+  }
+</section>

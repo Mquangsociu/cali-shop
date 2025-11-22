@@ -1,0 +1,58 @@
+<main class="detail-wrapper" aria-live="polite">
+  @if (product(); as p) {
+    <div class="product-detail">
+      <div class="detail-layout">
+        <div class="gallery">
+          @if (activeImage(); as mainImg) {
+            <div class="main-img">
+              <img [ngSrc]="mainImg" [alt]="p.title" width="500" height="500" priority>
+            </div>
+          }
+          @if (p.images && p.images.length > 0) {
+            <div class="thumbs" role="group" aria-label="Ảnh sản phẩm">
+              @for (img of p.images; track img; let i = $index) {
+                <button 
+                  class="thumb" 
+                  [class.active]="img === activeImage()" 
+                  (click)="setActiveImage(img)"
+                  [attr.aria-label]="'Ảnh ' + (i + 1)">
+                  <img [ngSrc]="img" [alt]="p.title + ' hình ' + (i + 1)" width="80" height="80">
+                </button>
+              }
+            </div>
+          }
+        </div>
+        <div class="info-panel">
+          <div class="badges">
+            <span class="badge" [class]="p.category">{{ labelCategory(p.category) }}</span>
+          </div>
+          <h2 class="detail-title">{{ p.title }}</h2>
+          <p class="detail-desc">{{ p.desc }}</p>
+          <div class="price-block">
+            <span class="price">{{ formatPrice(p.price) }}</span>
+            @if (p.oldPrice) {
+              <span class="old-price">{{ formatPrice(p.oldPrice) }}</span>
+            }
+            @if (discountPercent() > 0) {
+              <span class="discount-badge">-{{ discountPercent() }}%</span>
+            }
+          </div>
+          <div class="detail-specs">
+            @for (spec of p.specs; track spec) {
+              <span class="badge">{{ spec }}</span>
+            }
+          </div>
+          <div class="actions-row">
+            <button class="buy-btn">MUA NGAY</button>
+            <a routerLink="/" class="back-btn">Quay lại</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="not-found">
+      Không tìm thấy sản phẩm. <br/>
+      <a routerLink="/" class="back-btn">Quay về danh sách</a>
+    </div>
+  }
+</main>

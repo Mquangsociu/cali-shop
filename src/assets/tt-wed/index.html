@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cửa Hàng Laptop - Gaming | Văn Phòng | Design</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="site-header">
+    <h1>CALI SHOP</h1>
+    <p class="tagline">Chuyên Laptop Gaming • Văn Phòng • Design giá rẻ cho sinh viên HOA SEN</p>
+    <nav class="category-nav" aria-label="Danh mục">
+        <button class="cat-btn active" data-filter="all">Tất cả</button>
+        <button class="cat-btn" data-filter="gaming">Gaming</button>
+        <button class="cat-btn" data-filter="van-phong">Văn Phòng</button>
+        <button class="cat-btn" data-filter="design">Design</button>
+    </nav>
+    <div class="toolbar">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm model..." aria-label="Ô tìm kiếm" />
+        <select id="sortSelect" aria-label="Sắp xếp theo giá">
+            <option value="default">Sắp xếp: Mặc định</option>
+            <option value="asc">Giá tăng dần</option>
+            <option value="desc">Giá giảm dần</option>
+        </select>
+    </div>
+</header>
+<main>
+    <section id="products" class="product-grid" aria-live="polite">
+        <!-- Sản phẩm sẽ được render bằng JS -->
+    </section>
+</main>
+<footer class="site-footer">
+    <p>&copy; 2025 Cửa Hàng Laptop. Liên hệ: support@cuahanglaptop.vn</p>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
